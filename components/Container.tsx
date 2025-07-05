@@ -1,9 +1,17 @@
-import { SafeAreaView } from 'react-native';
 
-export const Container = ({ children }: { children: React.ReactNode }) => {
-  return <SafeAreaView className={styles.container}>{children}</SafeAreaView>;
-};
+import { ReactNode } from 'react'
+import { View } from 'react-native-reanimated/lib/typescript/Animated'
 
-const styles = {
-  container: 'flex flex-1 m-6',
-};
+
+type ContainerProps = {
+    children:ReactNode
+}
+const Container = ({children}:ContainerProps) => {
+  return (
+    <View>
+        {children}
+    </View>
+  )
+}
+
+export default Container

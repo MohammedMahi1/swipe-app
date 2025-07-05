@@ -1,11 +1,12 @@
+import Container from 'components/Container'
 import React from 'react'
 import { Text, View } from 'react-native'
 
 const OnBoard = () => {
   return (
-    <View>
+    <Container>
         <Text>OnBoard</Text>
-    </View>
+    </Container>
   )
 }
 
