@@ -13,7 +13,8 @@ const Button = ({ children , ...props}: ButtonProps) => {
             borderRadius:16,
             justifyContent:"center",
             alignItems:"center",
-            backgroundColor:"#121212"
+            backgroundColor:"#121212",
+            width:"100%"
         }
     })
     return (

@@ -3,12 +3,12 @@ import { ReactNode } from 'react'
 import { StyleSheet, StyleSheetProperties, View, ViewProps } from 'react-native'
 
 
-type ContainerProps = {
+type ContainerProps = ViewProps&{
     children:ReactNode;
-} & ViewProps
-const Container = ({children,...props}:ContainerProps) => {
+} 
+const Container = ({children,style,...rest}:ContainerProps) => {
   return (
-    <View  style={style.container} {...props}>
+    <View style={[StyleContainer.container,style]} {...rest} >
         {children}
     </View>
   )
@@ -16,7 +16,7 @@ const Container = ({children,...props}:ContainerProps) => {
 
 
 
-const style = StyleSheet.create({
+const StyleContainer = StyleSheet.create({
     container:{
         paddingHorizontal:24,
         flex:1
