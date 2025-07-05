@@ -14,7 +14,7 @@ const OnBoard = () => {
           <Container className='gap-20' style={{ paddingBottom: 40,flexDirection:"column",justifyContent:"flex-end",alignItems:"center", }}>
             <Text className='text-5xl text-center font-bold'>Your adventure,
             start from now</Text>
-            <BtnLink screen='Home'>Get Started</BtnLink>
+            <BtnLink screen='Index'>Get Started</BtnLink>
           </Container>
         </ImageBackground>
       </SafeAreaView>
