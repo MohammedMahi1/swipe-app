@@ -1,17 +1,24 @@
 
 import { ReactNode } from 'react'
-import { View } from 'react-native-reanimated/lib/typescript/Animated'
+import { StyleSheet, View, ViewProps } from 'react-native'
 
 
 type ContainerProps = {
     children:ReactNode
-}
-const Container = ({children}:ContainerProps) => {
+} & ViewProps
+const Container = ({children,...props}:ContainerProps) => {
   return (
-    <View>
+    <View style={style.container} {...props}>
         {children}
     </View>
   )
 }
 
+
+
+const style = StyleSheet.create({
+    container:{
+        paddingHorizontal:24,
+    }
+})
 export default Container

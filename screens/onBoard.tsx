@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 
 const OnBoard = () => {
   return (
-    <Container>
+    <Container style={{paddingTop:46}}>
         <Text>OnBoard</Text>
     </Container>
   )
