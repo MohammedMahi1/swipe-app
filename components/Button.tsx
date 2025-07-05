@@ -1,28 +1,21 @@
+import { Link } from '@react-navigation/native';
 import React, { ReactNode } from 'react'
 import { Pressable, PressableProps, StyleSheet, Text, useColorScheme, View } from 'react-native'
+import { twMerge } from 'tailwind-merge';
 
 
 type ButtonProps = {
-    children: ReactNode
+    children: ReactNode;
+    to?:string;
 } & PressableProps
-const Button = ({ children , ...props}: ButtonProps) => {
+const Button = ({ children , to,...props}: ButtonProps) => {
     const theme = useColorScheme()
-    const style = StyleSheet.create({
-        button:{
-            paddingVertical:20,
-            borderRadius:16,
-            justifyContent:"center",
-            alignItems:"center",
-            backgroundColor:"#121212",
-            width:"100%"
-        }
-    })
     return (
         <Pressable
-        style={style.button}
+        className={twMerge('py-4 rounded-[16] justify-center items-center  w-full')}
         {...props}>
             {
-                typeof children === "string" ?
+                typeof children === "string"  ?
                     <Text style={{color:"#ffffff",fontSize:26}}>
                         {children}
                     </Text>

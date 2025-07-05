@@ -1,5 +1,6 @@
 import Button from 'components/Button'
 import Container from 'components/Container'
+import { BtnLink } from 'components/Link';
 import { ImageBackground, StyleSheet, Text } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -10,10 +11,10 @@ const OnBoard = () => {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <ImageBackground source={require("../assets/on-board-bg-img.png")} resizeMode="cover" style={styles.image}>
-          <Container style={{ paddingBottom: 40,flexDirection:"column",justifyContent:"flex-end",alignItems:"center", }}>
-            <Text className='text-'>Your adventure,
+          <Container className='gap-20' style={{ paddingBottom: 40,flexDirection:"column",justifyContent:"flex-end",alignItems:"center", }}>
+            <Text className='text-5xl text-center font-bold'>Your adventure,
             start from now</Text>
-            <Button>Get Started</Button>
+            <BtnLink screen='Home'>Get Started</BtnLink>
           </Container>
         </ImageBackground>
       </SafeAreaView>
