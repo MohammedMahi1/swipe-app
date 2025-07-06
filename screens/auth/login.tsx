@@ -11,26 +11,24 @@ const Login = () => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <Container className=' flex-1 items-center  bg-white w-full justify-between'>
                 <H1>Swiplet</H1>
-                <View>
-                    <View className='w-full'>
+                <View className='w-full gap-6'>
+                    <View className='w-full gap-6'>
                         <Input
                             placeholder='ewfdvdfv@example.com'
                             label='Email'
                             keyboardType='email-address'
+                            autoFocus={true}
                             autoCapitalize='none'
                             autoComplete='email'
-
                         />
                         <Input
                             placeholder='*********'
                             label='Password'
                             visible
+                            maxLength={20}
                         />
                     </View>
-                    <View>
-                        <Text>Remember Me Next Time </Text>
                         <Button>Connect</Button>
-                    </View>
 
                 </View>                    
                 <View className='flex-row gap-2 items-center justify-between w-full'>

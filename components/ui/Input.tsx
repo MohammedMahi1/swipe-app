@@ -7,9 +7,15 @@ type InputProps = {
     label?: string;
     placeholder?: string;
     visible?: boolean;
-} & TextInputProps
+    autoComplete?: TextInputProps['autoComplete'];
+    autoCapitalize?: TextInputProps['autoCapitalize'];
+    keyboardType?: TextInputProps['keyboardType'];
+    autoFocus?: TextInputProps['autoFocus'];
+    maxLength?: TextInputProps['maxLength'];
+    onChangeText?: TextInputProps['onChangeText'];
+}
 
-const Input = ({ label, placeholder, visible }: InputProps) => {
+const Input = ({ label, placeholder, visible, autoComplete, autoCapitalize, keyboardType, autoFocus, maxLength, onChangeText }: InputProps) => {
     const [isVisible, setIsVisible] = React.useState(true);
     return (
         <>
@@ -21,25 +27,37 @@ const Input = ({ label, placeholder, visible }: InputProps) => {
                         }
                         <View className='flex-row items-center rounded-md w-full relative'>
                             <TextInput
+                                autoFocus={autoFocus}
+                                autoCapitalize={autoCapitalize}
+                                autoComplete={autoComplete}
+                                keyboardType={keyboardType}
+                                maxLength={maxLength}
+                                onChangeText={onChangeText}
                                 secureTextEntry={isVisible}
                                 placeholder={placeholder}
                                 className='border-2 flex items-center justify-start p-4 flex-row border-gray-300 rounded-md text-start align-middle text-[18px]  w-full text-black  focus:border-[#121212] focus:outline-none'
                             />
                             <Pressable onPress={() => setIsVisible(!isVisible)} className='absolute right-5 bg-white '>
                                 {isVisible ?
-                                    <Feather name="eye-off" size={24} color="black"  /> :
-                                    <Feather name="eye" size={24} color="black"/>}
+                                    <Feather name="eye-off" size={24} color="black" /> :
+                                    <Feather name="eye" size={24} color="black" />}
                             </Pressable>
                         </View>
                     </View>
                     :
-                    <View className='w-full flex-col gap-2'>
+                    <View className='w-full flex flex-col gap-2'>
                         {
                             label && <Text>{label}</Text>
                         }
                         <TextInput
+                            autoFocus={autoFocus}
+                            autoCapitalize={autoCapitalize}
+                            autoComplete={autoComplete}
+                            keyboardType={keyboardType}
+                            maxLength={maxLength}
+                            onChangeText={onChangeText}
                             placeholder={placeholder}
-                            className='border-2 flex items-center justify-start p-4 flex-row border-gray-300 rounded-md text-start align-middle text-[18px]  w-full text-black  focus:border-[#121212] focus:outline-none'
+                            className='border-2 p-4  border-gray-300 rounded-md  text-[18px]  w-full text-black  focus:border-[#121212] focus:outline-none'
                         />
 
                     </View>
