@@ -1,0 +1,50 @@
+import { Feather } from '@expo/vector-icons';
+import React from 'react'
+import { Pressable, Text, TextInput, TextInputProps, View } from 'react-native'
+
+
+type InputProps = {
+    label?: string;
+    placeholder?: string;
+    visible?: boolean;
+} & TextInputProps
+
+const Input = ({ label, placeholder, visible }: InputProps) => {
+    const [isVisible, setIsVisible] = React.useState(true);
+    return (
+        <>
+            {
+                visible ?
+                    <View className='w-full flex-col gap-2'>
+                        {
+                            label && <Text>{label}</Text>
+                        }
+                        <View className='flex-row items-center rounded-md w-full relative'>
+                            <TextInput
+                                secureTextEntry={isVisible}
+                                placeholder={placeholder}
+                                className='border-2 flex items-center justify-start p-4 flex-row border-gray-300 rounded-md text-start align-middle text-[18px]  w-full text-black  focus:border-[#121212] focus:outline-none'
+                            />
+                            <Pressable onPress={() => setIsVisible(!isVisible)} className='absolute right-5 bg-white '>
+                                {isVisible ?
+                                    <Feather name="eye-off" size={24} color="black"  /> :
+                                    <Feather name="eye" size={24} color="black"/>}
+                            </Pressable>
+                        </View>
+                    </View>
+                    :
+                    <View className='w-full flex-col gap-2'>
+                        {
+                            label && <Text>{label}</Text>
+                        }
+                        <TextInput
+                            placeholder={placeholder}
+                            className='border-2 flex items-center justify-start p-4 flex-row border-gray-300 rounded-md text-start align-middle text-[18px]  w-full text-black  focus:border-[#121212] focus:outline-none'
+                        />
+
+                    </View>
+            }
+        </>
+    )
+}
+export default Input
