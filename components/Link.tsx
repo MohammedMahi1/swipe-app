@@ -10,30 +10,7 @@ type LinkPrp = {
     screen : string,
     params ?: any
 }
-type BtnLinkProps = {} & LinkPrp & VariantProps<typeof variantsBtnLink>
 
-const variantsBtnLink = cva(
-    [
-        "flex",
-        "text-3xl",
-        "text-center",
-        "py-6 rounded-[24]",
-        "w-full",
-        "items-center",
-        "justify-center"
-    ],
-    {
-        variants:{
-            variant:{
-                default:"bg-primary border-4 border-transparent",
-                outlined:"bg-[#ffffff] border-4 border-[#121212]"
-            }
-        },
-        defaultVariants:{
-            variant:"default"
-        }
-    }
-) 
 
 
 const Links = ({ children, params, screen }: LinkPrp) => {
@@ -45,22 +22,4 @@ const Links = ({ children, params, screen }: LinkPrp) => {
 }
 
 
-
-const BtnLink = ({ children, params, screen,variant }: BtnLinkProps) => {
-
-    
-    return (
-        <Link screen={screen} params={params} className={twMerge(variantsBtnLink({variant}))}>
-
-                {
-                    typeof children === "string" ?
-                        <Text className={twMerge('font-semibold ',variant === "outlined"? "text-[#121212]":"text-white" )}>
-                            {children}
-                        </Text>
-                        :
-                        children
-                }
-        </Link>
-    )
-}
-export { Links, BtnLink }
+export  default Links

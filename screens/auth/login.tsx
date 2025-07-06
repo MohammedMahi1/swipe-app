@@ -28,7 +28,7 @@ const Login = () => {
                             maxLength={20}
                         />
                     </View>
-                        <Button>Connect</Button>
+                        <Button to='Index'>Connect</Button>
 
                 </View>                    
                 <View className='flex-row gap-2 items-center justify-between w-full'>
