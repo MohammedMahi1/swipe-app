@@ -15,7 +15,7 @@ type LinkPrp = {
 
 const Links = ({ children, params, screen }: LinkPrp) => {
     return (
-        <Link screen={screen} params={params}>
+        <Link screen={screen} params={params} className='underline !text-[#121212] text-[16px]'>
             {children}
         </Link>
     )

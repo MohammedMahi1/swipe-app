@@ -1,5 +1,6 @@
 import Button from 'components/Button'
 import Container from 'components/Container'
+import Links from 'components/Link'
 import { H1 } from 'components/Typographie'
 import Input from 'components/ui/Input'
 import {Text, View } from 'react-native'
@@ -18,7 +19,7 @@ const Login = () => {
                             autoCapitalize='none'
                             autoComplete='email'
                         />
-                        
+
                         <Input
                             placeholder='*********'
                             label='Password'
@@ -31,7 +32,7 @@ const Login = () => {
                 </View>                    
                 <View className='flex-row gap-2 items-center justify-between w-full'>
                     <Text>Forget Your Password?</Text>
-                    <Text>Sign Up</Text>
+                    <Links screen='SignUp'>Sign Up</Links>
                 </View>
             </Container>
     )

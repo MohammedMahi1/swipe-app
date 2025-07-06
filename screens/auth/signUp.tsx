@@ -1,9 +1,10 @@
 import Button from 'components/Button'
 import Container from 'components/Container'
+import Links from 'components/Link'
 import { H1 } from 'components/Typographie'
 import Input from 'components/ui/Input'
 import { useRef } from 'react'
-import { TextInput, View } from 'react-native'
+import { Text, TextInput, View } from 'react-native'
 
 const SignUp = () => {
   const firstNameRef = useRef<TextInput>(null)
@@ -19,6 +20,7 @@ const SignUp = () => {
           label='First Name'
           placeholder='John'
           ref={firstNameRef}
+          autoFocus={true}
           onSubmitEditing={() => lastNameRef.current?.focus()}
         />
         <Input
@@ -33,9 +35,10 @@ const SignUp = () => {
           onSubmitEditing={() => passwordRef.current?.focus()}
           placeholder='john.doe@example.com'
           label='Email'
+          inputMode='email'
+          autoComplete='email'
           keyboardType='email-address'
           autoCapitalize='none'
-          autoComplete='email'
           returnKeyType='next'
         />
         <Input
@@ -55,6 +58,7 @@ const SignUp = () => {
         />
       </View>
       <Button to="Home">Create Account</Button>
+      <View className='text-center w-full flex flex-row flex-nowrap gap-2 items-center justify-start'><Text>Already have an account?</Text><Links screen='Login'>Log in</Links></View>
     </Container>
   )
 }
