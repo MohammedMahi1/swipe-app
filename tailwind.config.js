@@ -1,3 +1,5 @@
+import { useColorScheme } from 'react-native';
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -9,7 +11,12 @@ module.exports = {
 
   presets: [require('nativewind/preset')],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        "primary":"#121212"
+      }
+    },
+    
   },
   plugins: [],
 };

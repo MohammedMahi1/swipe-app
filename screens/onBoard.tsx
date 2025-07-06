@@ -11,7 +11,7 @@ const OnBoard = () => {
     <SafeAreaProvider>
       <SafeAreaView style={styles.container} edges={['left', 'right']}>
       <ImageBackground source={require("../assets/on-board-bg-img.png")} resizeMode="cover" style={styles.image}>
-          <Container className='gap-20' style={{ paddingBottom: 40,flexDirection:"column",justifyContent:"flex-end",alignItems:"center", }}>
+          <Container className='gap-20 ' style={{ paddingBottom: 40,flexDirection:"column",justifyContent:"flex-end",alignItems:"center", }}>
             <Text className='text-5xl text-center font-bold'>Your adventure,
             start from now</Text>
             <BtnLink screen='Index'>Get Started</BtnLink>
