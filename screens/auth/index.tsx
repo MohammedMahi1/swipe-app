@@ -1,3 +1,4 @@
+import Button from 'components/Button'
 import Container from 'components/Container'
 import { BtnLink } from 'components/Link'
 import { H1, H2 } from 'components/Typographie'
@@ -19,6 +20,7 @@ const Index = () => {
                     Make new account
                 </BtnLink>
             </View>
+
         </Container>
     )
 }

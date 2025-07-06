@@ -8,11 +8,15 @@ type ButtonProps = {
     children: ReactNode;
     to?:string;
 } & PressableProps
+
+
+
+
 const Button = ({ children , to,...props}: ButtonProps) => {
     const theme = useColorScheme()
     return (
         <Pressable
-        className={twMerge('py-4 rounded-[16] justify-center items-center  w-full')}
+        className={twMerge('py-4 rounded-xl justify-center bg-primary items-center w-full')}
         {...props}>
             {
                 typeof children === "string"  ?

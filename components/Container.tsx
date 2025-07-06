@@ -19,7 +19,7 @@ const Container = ({children,style,...rest}:ContainerProps) => {
 const StyleContainer = StyleSheet.create({
     container:{
         paddingHorizontal:24,
-        paddingTop:80,
+        paddingVertical:60,
         flex:1
     }
 })
