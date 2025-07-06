@@ -5,7 +5,6 @@ import SignUp from 'screens/auth/signUp';
 import Home from 'screens/home';
 import OnBoard from 'screens/onBoard';
 
-// Screens
 const Stack = createStackNavigator();
 const Navigation = () => {
   return (

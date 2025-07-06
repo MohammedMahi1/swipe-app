@@ -3,7 +3,7 @@ import Container from 'components/Container'
 import Links from 'components/Link'
 import { H1 } from 'components/Typographie'
 import Input from 'components/ui/Input'
-import {Text, View } from 'react-native'
+import {KeyboardAvoidingView, Text, View } from 'react-native'
 
 const Login = () => {
     return (
@@ -18,14 +18,14 @@ const Login = () => {
                             autoFocus={true}
                             autoCapitalize='none'
                             autoComplete='email'
-                        />
+                            />
 
                         <Input
                             placeholder='*********'
                             label='Password'
                             visible
                             maxLength={20}
-                        />
+                            />
                     </View>
                         <Button to='Index'>Connect</Button>
 

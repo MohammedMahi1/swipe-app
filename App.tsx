@@ -1,6 +1,6 @@
 import './global.css';
 
-import {NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 
 import Navigation from './navigation';
@@ -10,8 +10,8 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer >
-      <Navigation/>
-    </NavigationContainer>
+      <NavigationContainer >
+        <Navigation />
+      </NavigationContainer>
   );
 }
