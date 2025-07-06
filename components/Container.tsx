@@ -1,16 +1,19 @@
 
 import { ReactNode } from 'react'
-import { StyleSheet, StyleSheetProperties, View, ViewProps } from 'react-native'
+import { ScrollView, ScrollViewProps, StyleSheet, View } from 'react-native'
 
 
-type ContainerProps = ViewProps&{
+type ContainerProps = ScrollViewProps&{
     children:ReactNode;
+    
 } 
-const Container = ({children,style,...rest}:ContainerProps) => {
+const Container = ({children,style,className,...rest}:ContainerProps) => {
   return (
-    <View style={[StyleContainer.container,style]} {...rest} >
+    <ScrollView keyboardShouldPersistTaps='handled'  contentContainerStyle={{flex:1}} scrollEnabled={false}{...rest} >
+      <View style={[StyleContainer.container,style]} className={className} >
         {children}
-    </View>
+      </View>
+    </ScrollView>
   )
 }
 
