@@ -18,6 +18,14 @@ const Header = ({children,className}:BoxProps) => {
     </View>
   )
 }
+const Body = ({children,className}:BoxProps) => {
+  return (
+    <View className={className}>
+      {children}
+    </View>
+  )
+}
 
 Box.Header = Header
+Box.Body = Body
 export default Box
