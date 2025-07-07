@@ -31,7 +31,7 @@ const Login = () => {
 
                 </View>                    
                 <View className='flex-row gap-2 items-center justify-between w-full'>
-                    <Text>Forget Your Password?</Text>
+                    <Links screen='ForgetPassword'>Forgot Your Password?</Links>
                     <Links screen='SignUp'>Sign Up</Links>
                 </View>
             </Container>
