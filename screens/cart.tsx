@@ -1,11 +1,12 @@
+import Container from 'components/Container'
 import React from 'react'
 import { Text, View } from 'react-native'
 
 const Cart = () => {
   return (
-    <View>
+    <Container>
         <Text>Cart</Text>
-    </View>
+    </Container>
   )
 }
 
