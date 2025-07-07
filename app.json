@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "swipe-app",
-    "slug": "swipe-app",
+    "slug": "swiplet",
     "version": "1.0.0",
     "web": {
       "favicon": "./assets/favicon.png"
@@ -22,7 +22,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.swipeapp",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -30,6 +34,12 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.swipeapp"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "fccbe010-1ac8-447d-8cd5-7fe4bbb56654"
+      }
+    },
+    "owner": "mohammed.mahi012"
   }
 }
