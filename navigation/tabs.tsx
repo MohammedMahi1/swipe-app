@@ -18,8 +18,9 @@ const TabNavigation = () => {
                     fontSize: 16,
                 },
                 tabBarStyle: {
-                    backgroundColor: "transparent",
-                    borderColor: "transparent"
+                    backgroundColor: "#ffffff",
+                    borderColor: "transparent",
+                    
                 }
             }}>
 

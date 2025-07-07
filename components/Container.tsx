@@ -5,11 +5,11 @@ import { ScrollView, ScrollViewProps, StyleSheet, View } from 'react-native'
 
 type ContainerProps = ScrollViewProps&{
     children:ReactNode;
-    
+    scrollEnabled?:boolean;
 } 
-const Container = ({children,style,className,...rest}:ContainerProps) => {
+const Container = ({children,style,className,scrollEnabled=false,...rest}:ContainerProps) => {
   return (
-    <ScrollView keyboardShouldPersistTaps='handled'  contentContainerStyle={{flex:1}} scrollEnabled={false}{...rest} >
+    <ScrollView keyboardShouldPersistTaps='handled'  contentContainerStyle={{flex:1,backgroundColor:"#ffffff"}} scrollEnabled={scrollEnabled} {...rest} >
       <View style={[StyleContainer.container,style]} className={className} >
         {children}
       </View>
