@@ -1,12 +1,23 @@
 import React from 'react'
 import { View } from 'react-native'
-
-const Box = () => {
+type BoxProps = {
+    children ?: React.ReactNode,
+    className ?: string
+}
+const Box = ({children,className}:BoxProps) => {
   return (
-    <View>
-        
+    <View className={className}>
+      {children}
+    </View>
+  )
+}
+const Header = ({children,className}:BoxProps) => {
+  return (
+    <View className={className}>
+      {children}
     </View>
   )
 }
 
+Box.Header = Header
 export default Box

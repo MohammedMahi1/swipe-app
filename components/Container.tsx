@@ -9,7 +9,7 @@ type ContainerProps = ScrollViewProps&{
 } 
 const Container = ({children,style,className,scrollEnabled=false,...rest}:ContainerProps) => {
   return (
-    <ScrollView keyboardShouldPersistTaps='handled'  contentContainerStyle={{flex:1,backgroundColor:"#ffffff"}} scrollEnabled={scrollEnabled} {...rest} >
+    <ScrollView keyboardShouldPersistTaps='handled'  contentContainerStyle={{flex:1}} scrollEnabled={scrollEnabled} {...rest} >
       <View style={[StyleContainer.container,style]} className={className} >
         {children}
       </View>

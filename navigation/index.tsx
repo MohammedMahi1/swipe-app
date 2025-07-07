@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 const Navigation = () => {
   return (
     <Stack.Navigator>
+      <Stack.Screen name="Tabs" component={TabNavigation} options={{ headerShown: false }} />
       <Stack.Screen name="OnBoard" component={OnBoard} options={{
         headerShown: false
       }} />
@@ -22,7 +23,6 @@ const Navigation = () => {
       <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
       <Stack.Screen name="ForgetPassword" component={ForgetPassword} options={{ headerShown: false }} />
 
-      <Stack.Screen name="Tabs" component={TabNavigation} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }
