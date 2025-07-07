@@ -57,7 +57,7 @@ const SignUp = () => {
             placeholder='*********'
           />
         </View>
-        <Button to="Home">Create Account</Button>
+        <Button to="Tabs">Create Account</Button>
         <View className='text-center w-full flex flex-row flex-nowrap gap-2 items-center justify-start'><Text>Already have an account?</Text><Links screen='Login'>Log in</Links></View>
       </Container>
   )
