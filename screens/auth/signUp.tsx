@@ -14,6 +14,7 @@ const SignUp = () => {
   const confirmPasswordRef = useRef<TextInput>(null)
   return (
       <Container className='items-center justify-between bg-white w-full'>
+        <KeyboardAvoidingView>
         <H1>Create Account On Swiplet</H1>
         <View className='w-full gap-6'>
           <Input
@@ -59,6 +60,7 @@ const SignUp = () => {
         </View>
         <Button to="Tabs">Create Account</Button>
         <View className='text-center w-full flex flex-row flex-nowrap gap-2 items-center justify-start'><Text>Already have an account?</Text><Links screen='Login'>Log in</Links></View>
+      </KeyboardAvoidingView>
       </Container>
   )
 }
