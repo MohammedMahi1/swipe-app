@@ -7,7 +7,6 @@ export const API_AXIOS = axios.create({
   headers: {
     'X-Custom-Header': 'foobar',
     'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    "Authorization": `Bearer ${process.env.API_TOKEN}` // Assuming
+    'Accept': 'application/json', // Assuming
   }
 });
