@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {API_URL} from '@env';
-const API_AXIOS = axios.create({
+
+export const API_AXIOS = axios.create({
   baseURL: API_URL+"/user",
   timeout: 1000,
   headers: {
