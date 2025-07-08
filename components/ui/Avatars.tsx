@@ -4,11 +4,13 @@ import { Avatar } from 'react-native-elements';
 
 type AvatarProps = {
     size?: number | 'small' | 'medium' | 'large' | 'xlarge';
+    onPress?: () => void;
 }
 
-const Avatars = ({ size = "medium" }: AvatarProps) => {
+const Avatars = ({ size = "medium" ,onPress}: AvatarProps) => {
     return (
         <Avatar
+            onPress={onPress}
             renderPlaceholderContent={<View className='bg-red-700 p-5 w-20 h-20' />}
             rounded
             size={size}
