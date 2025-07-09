@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { API_AXIOS } from "api/api";
+import axios from "axios";
 
-const asyncLogin = createAsyncThunk("auth/login",async(data,thunkAPI)=>{
+export const asyncLogin = createAsyncThunk("auth/login", async (data:object,thunkAPI)=>{
     const {rejectWithValue} = thunkAPI
     try {
-        const res = await API_AXIOS.post("/user/login",data);
-        return res
+        const res = await API_AXIOS.post("user/login", data)
+        return res.data
     } catch (error) {
         return rejectWithValue(error)
     }
@@ -32,7 +33,6 @@ const authSlice = createSlice({
         builder.addCase(asyncLogin.fulfilled,(state,{payload})=>{
             state.loading = false;
             state.isAuthenticated = true;
-            console.log(payload);
             
             // state.token = payload;
         });
@@ -41,7 +41,9 @@ const authSlice = createSlice({
             state.error = payload;
             state.isAuthenticated = false;
             console.log(payload);
-            
+
         });
     }
 })
+
+export default authSlice

@@ -14,9 +14,10 @@ type InputProps = {
     maxLength?: TextInputProps['maxLength'];
     onChangeText?: TextInputProps['onChangeText'];
     ref?: React.RefObject<TextInput | null>;
+    error:null | string
 } & TextInputProps;
 
-const Input = ({ label, placeholder, visible, autoComplete, autoCapitalize, keyboardType, autoFocus, maxLength, onChangeText, ref, ...props }: InputProps) => {
+const Input = ({ label, placeholder, visible, autoComplete, error,autoCapitalize, keyboardType, autoFocus, maxLength, onChangeText, ref, ...props }: InputProps) => {
     const [isVisible, setIsVisible] = React.useState(true);
     const inRef = ref || useRef<TextInput | null>(null)
     return (
@@ -25,7 +26,10 @@ const Input = ({ label, placeholder, visible, autoComplete, autoCapitalize, keyb
                 visible ?
                     <View className='w-full flex-col gap-2'>
                         {
-                            label && <Text>{label}</Text>
+                            error ?
+                            <Text className='text-red-500'>{error}</Text>:
+                            <Text>{label}</Text>
+
                         }
                         <View className='flex-row items-center rounded-md w-full relative'>
                             <TextInput
@@ -51,7 +55,10 @@ const Input = ({ label, placeholder, visible, autoComplete, autoCapitalize, keyb
                     :
                     <View className='w-full flex flex-col gap-2'>
                         {
-                            label && <Text>{label}</Text>
+                            error ?
+                            <Text className='text-red-500'>{error}</Text>:
+                            <Text>{label}</Text>
+
                         }
                         <TextInput
                             ref={inRef}

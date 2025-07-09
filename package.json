@@ -25,6 +25,7 @@
     "expo-status-bar": "~2.2.3",
     "nativewind": "latest",
     "react": "19.0.0",
+    "react-hook-form": "^7.60.0",
     "react-native": "0.79.5",
     "react-native-dotenv": "^3.4.11",
     "react-native-elements": "^3.4.3",

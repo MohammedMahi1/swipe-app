@@ -1,8 +1,6 @@
 import axios from 'axios';
-import {API_URL} from '@env';
-
 export const API_AXIOS = axios.create({
-  baseURL: API_URL,
+  baseURL: "http://192.168.0.4:8000/api/",
   headers: {
     'X-Custom-Header': 'foobar',
     'Content-Type': 'application/json',
