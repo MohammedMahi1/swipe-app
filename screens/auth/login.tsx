@@ -3,10 +3,11 @@ import Container from 'components/Container'
 import Links from 'components/Link'
 import { H1 } from 'components/Typographie'
 import Input from 'components/ui/Input'
-import { useAppDispatch } from 'hooks/storeHooks'
+import { useAppDispatch, useAppSelector } from 'hooks/storeHooks'
 import { KeyboardAvoidingView, View } from 'react-native'
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { asyncLogin } from 'store/reducers/authSlices/authSlice'
+import Error from 'components/Error'
 
 type Inputs = {
     email: string
@@ -16,6 +17,7 @@ type Inputs = {
 
 const Login = () => {
     const dispatch = useAppDispatch()
+    const {error} = useAppSelector((state)=>state.auth)
     const {
         control,
         handleSubmit,
@@ -29,7 +31,7 @@ const Login = () => {
                 <H1>Swiplet</H1>
                 <View className='w-full gap-6'>
                     <View className='w-full gap-6'>
-
+                            <Error message='dfvdfvd' className={error ? "opacity-1":"opacity-0"} />
                         <Controller
                             control={control}
                             rules={{
@@ -73,6 +75,7 @@ const Login = () => {
                             )}
                             name="password"
                         />
+
                     </View>
                     <Button onPress={handleSubmit(onSubmit)}>Connect</Button>
 

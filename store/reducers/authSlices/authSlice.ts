@@ -50,6 +50,7 @@ const authSlice = createSlice({
             state.error = payload;
             state.isAuthenticated = false;
             console.log(payload);
+            state.error = payload
         });
     }
 })
