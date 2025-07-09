@@ -31,7 +31,7 @@ const Login = () => {
                 <H1>Swiplet</H1>
                 <View className='w-full gap-6'>
                     <View className='w-full gap-6'>
-                            <Error message='dfvdfvd' className={error ? "opacity-1":"opacity-0"} />
+                            <Error message={error} className={error ? "opacity-1":"opacity-0"} />
                         <Controller
                             control={control}
                             rules={{
