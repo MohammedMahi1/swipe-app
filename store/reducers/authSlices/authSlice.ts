@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { API_AXIOS } from "api/api";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 
 export const asyncLogin = createAsyncThunk("auth/login", async (data: object, thunkAPI) => {
     const { rejectWithValue } = thunkAPI
@@ -22,7 +22,7 @@ export const asyncLogin = createAsyncThunk("auth/login", async (data: object, th
 export const asyncCreateAcc = createAsyncThunk("auth/create", async (data: object, thunkAPI) => {
     const { rejectWithValue } = thunkAPI
     try {
-        const res = await API_AXIOS("user/create", data)
+        const res = await API_AXIOS.post("user/create", data)
         return res.data
     } catch (error) {
         if (error instanceof AxiosError) {
