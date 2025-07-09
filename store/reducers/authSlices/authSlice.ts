@@ -41,7 +41,9 @@ const authSlice = createSlice({
         builder.addCase(asyncLogin.fulfilled, (state, { payload }) => {
             state.loading = false;
             state.isAuthenticated = true;
-            // state.token = payload;
+            state.token = payload;
+            console.log(payload);
+            
         });
 
         builder.addCase(asyncLogin.rejected, (state, { payload }: PayloadAction<any>) => {
