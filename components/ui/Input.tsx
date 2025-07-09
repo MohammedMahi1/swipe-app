@@ -14,7 +14,7 @@ type InputProps = {
     maxLength?: TextInputProps['maxLength'];
     onChangeText?: TextInputProps['onChangeText'];
     ref?: React.RefObject<TextInput | null>;
-    error:null | string
+    error?:null | string
 } & TextInputProps;
 
 const Input = ({ label, placeholder, visible, autoComplete, error,autoCapitalize, keyboardType, autoFocus, maxLength, onChangeText, ref, ...props }: InputProps) => {

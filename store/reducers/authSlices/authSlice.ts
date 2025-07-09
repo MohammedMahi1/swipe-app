@@ -7,7 +7,7 @@ export const asyncLogin = createAsyncThunk("auth/login", async (data: object, th
     try {
         console.log("dfvdfvdfv");
 
-        const res = await axios.post("http://192.168.1.176:8000/api/user/login", data)
+        const res = await API_AXIOS("user/login", data)
         return res.data
     } catch (error) {
         if (error instanceof AxiosError) {
@@ -16,6 +16,22 @@ export const asyncLogin = createAsyncThunk("auth/login", async (data: object, th
         return rejectWithValue(error)
 
     }
+})
+
+
+export const asyncCreateAcc = createAsyncThunk("auth/create", async (data: object, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI
+    try {
+        const res = await API_AXIOS("user/create", data)
+        return res.data
+    } catch (error) {
+        if (error instanceof AxiosError) {
+            return rejectWithValue(error.response?.data)
+        }
+        return rejectWithValue(error)
+    }
+
+
 })
 
 
@@ -32,7 +48,7 @@ const authSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-
+        // Login auth asynThunk
         builder.addCase(asyncLogin.pending, (state) => {
             state.loading = true;
             state.error = null;
