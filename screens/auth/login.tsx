@@ -17,13 +17,13 @@ type Inputs = {
 
 const Login = () => {
     const dispatch = useAppDispatch()
-    const {error} = useAppSelector((state)=>state.auth)
+    const {error,isAuthenticated} = useAppSelector((state)=>state.auth)    
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) =>  dispatch(asyncLogin(data));
+    const onSubmit: SubmitHandler<Inputs> = (data) =>  dispatch(asyncLogin(data))
     
     return (
         <KeyboardAvoidingView className='flex-1' behavior='padding'>

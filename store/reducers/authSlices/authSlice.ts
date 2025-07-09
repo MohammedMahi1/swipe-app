@@ -7,7 +7,7 @@ export const asyncLogin = createAsyncThunk("auth/login", async (data: object, th
     try {
         console.log("dfvdfvdfv");
 
-        const res = await API_AXIOS("user/login", data)
+        const res = await API_AXIOS.post("user/login", data)
         return res.data
     } catch (error) {
         if (error instanceof AxiosError) {
