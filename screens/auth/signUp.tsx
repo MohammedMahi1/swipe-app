@@ -17,7 +17,6 @@ const SignUp = () => {
   const emailRef = useRef<TextInput>(null)
   const passwordRef = useRef<TextInput>(null)
   const confirmPasswordRef = useRef<TextInput>(null)
-
   const [passConf, setPassConf] = useState<string | null>(null)
   const { error } = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch()
@@ -133,7 +132,18 @@ const SignUp = () => {
             name="password"
           />
 
-
+          <Input
+            returnKeyType='next'
+            placeholder='password'
+            label='Password'
+            enablesReturnKeyAutomatically
+            visible
+            onChangeText={(e)=>console.log(e)}
+            maxLength={20}
+            // error={ ? "Password is required" : null}
+            ref={passwordRef}
+            onSubmitEditing={handleSubmit(onSubmit)}
+          />
         </View>
         <Button onPress={handleSubmit(onSubmit)}>Create Account</Button>
         <View className='text-center w-full flex flex-row flex-nowrap gap-2 items-center justify-start'><Text>Already have an account?</Text><Links screen='Login'>Log in</Links></View>

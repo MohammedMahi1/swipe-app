@@ -16,6 +16,7 @@ import { LoginInputs } from 'types/input'
 
 const Login = () => {
     const dispatch = useAppDispatch()
+    const {isAuthenticated} = useAppSelector(state=>state.auth)
     const navigating = useNavigation()
     const {error} = useAppSelector((state)=>state.auth)    
     const {
@@ -24,6 +25,12 @@ const Login = () => {
         formState: { errors },
     } = useForm<LoginInputs>()
     const onSubmit: SubmitHandler<LoginInputs> = (data) =>  dispatch(asyncLogin(data))
+
+    useEffect(()=>{
+        if(isAuthenticated){
+            navigating.navigate("Tabs")
+        }
+    },[])
     return (
         <KeyboardAvoidingView className='flex-1' behavior='padding'>
             <Container className='items-center justify-between  bg-white w-full'>
