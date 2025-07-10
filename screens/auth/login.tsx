@@ -8,6 +8,8 @@ import { KeyboardAvoidingView, View } from 'react-native'
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { asyncLogin } from 'store/reducers/authSlices/authSlice'
 import Error from 'components/Error'
+import { useNavigation } from '@react-navigation/native'
+import { useEffect } from 'react'
 
 type Inputs = {
     email: string
@@ -17,14 +19,14 @@ type Inputs = {
 
 const Login = () => {
     const dispatch = useAppDispatch()
-    const {error,isAuthenticated} = useAppSelector((state)=>state.auth)    
+    const navigating = useNavigation()
+    const {error} = useAppSelector((state)=>state.auth)    
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm<Inputs>()
     const onSubmit: SubmitHandler<Inputs> = (data) =>  dispatch(asyncLogin(data))
-    
     return (
         <KeyboardAvoidingView className='flex-1' behavior='padding'>
             <Container className='items-center justify-between  bg-white w-full'>
