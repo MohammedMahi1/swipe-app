@@ -10,11 +10,8 @@ import { asyncLogin } from 'store/reducers/authSlices/authSlice'
 import Error from 'components/Error'
 import { useNavigation } from '@react-navigation/native'
 import { useEffect } from 'react'
+import { LoginInputs } from 'types/input'
 
-type Inputs = {
-    email: string
-    password: string
-}
 
 
 const Login = () => {
@@ -25,8 +22,8 @@ const Login = () => {
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm<Inputs>()
-    const onSubmit: SubmitHandler<Inputs> = (data) =>  dispatch(asyncLogin(data))
+    } = useForm<LoginInputs>()
+    const onSubmit: SubmitHandler<LoginInputs> = (data) =>  dispatch(asyncLogin(data))
     return (
         <KeyboardAvoidingView className='flex-1' behavior='padding'>
             <Container className='items-center justify-between  bg-white w-full'>
