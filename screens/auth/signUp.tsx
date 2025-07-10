@@ -11,6 +11,13 @@ import { asyncCreateAcc } from 'store/reducers/authSlices/authSlice'
 import { SignUpInputs } from 'types/input'
 
 const SignUp = () => {
+
+  const firstNameRef = useRef<TextInput>(null)
+  const lastNameRef = useRef<TextInput>(null)
+  const emailRef = useRef<TextInput>(null)
+  const passwordRef = useRef<TextInput>(null)
+  const confirmPasswordRef = useRef<TextInput>(null)
+
   const [passConf, setPassConf] = useState<string | null>(null)
   const { error } = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch()
@@ -23,6 +30,8 @@ const SignUp = () => {
   const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
     setPassConf(data.password)
     dispatch(asyncCreateAcc(data))
+    return console.log(passConf);
+
   }
 
   return (
@@ -37,9 +46,13 @@ const SignUp = () => {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
+                enablesReturnKeyAutomatically
+                returnKeyType='next'
                 label='First Name'
                 placeholder='John'
+                ref={firstNameRef}
                 autoFocus={true}
+                onSubmitEditing={() => lastNameRef.current?.focus()}
                 value={value}
                 onBlur={onBlur}
                 onChangeText={onChange}
@@ -59,6 +72,10 @@ const SignUp = () => {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
+                enablesReturnKeyAutomatically
+                returnKeyType='next'
+                ref={lastNameRef}
+                onSubmitEditing={() => emailRef.current?.focus()}
                 label='First Name'
                 placeholder='Doe'
                 value={value}
@@ -79,9 +96,12 @@ const SignUp = () => {
             }}
             render={({ field: { onChange, onBlur, value } }) => (
               <Input
+                returnKeyType='next'
                 placeholder='ewfdvdfv@example.com'
                 label='Email'
-
+                ref={emailRef}
+                enablesReturnKeyAutomatically
+                onSubmitEditing={() => passwordRef.current?.focus()}
                 keyboardType='email-address'
                 onChangeText={onChange}
                 autoCapitalize='none'
@@ -101,14 +121,18 @@ const SignUp = () => {
             }}
             render={({ field: { onChange, onBlur, value, ref } }) => (
               <Input
+                returnKeyType='next'
                 placeholder='password'
                 label='Password'
+                enablesReturnKeyAutomatically
                 visible
                 maxLength={20}
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
                 error={errors.password ? "Password is required" : null}
+                ref={passwordRef}
+                onSubmitEditing={() => confirmPasswordRef.current?.focus()}
               />
             )}
             name="password"
@@ -125,17 +149,19 @@ const SignUp = () => {
                 placeholder='Confirme your password'
                 label='Confirme Password'
                 visible
+                enablesReturnKeyAutomatically
+                returnKeyType='done'
                 maxLength={20}
                 onChangeText={onChange}
                 onBlur={onBlur}
                 value={value}
                 error={passConf != value ? "Confirme not much" : null}
+                onSubmitEditing={handleSubmit(onSubmit)}
               />
             )}
             name="confirmePassword"
 
           />
-
         </View>
         <Button onPress={handleSubmit(onSubmit)}>Create Account</Button>
         <View className='text-center w-full flex flex-row flex-nowrap gap-2 items-center justify-start'><Text>Already have an account?</Text><Links screen='Login'>Log in</Links></View>
