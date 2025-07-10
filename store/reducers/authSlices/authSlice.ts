@@ -23,6 +23,7 @@ export const asyncCreateAcc = createAsyncThunk("auth/create", async (data: objec
     const { rejectWithValue } = thunkAPI
     try {
         const res = await API_AXIOS.post("user/create", data)
+        
         return res.data
     } catch (error) {
         if (error instanceof AxiosError) {
@@ -48,6 +49,14 @@ const authSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
+
+        builder.addCase(asyncCreateAcc.fulfilled,(state,{payload})=>{
+            state.loading = false
+            console.log(payload.message);
+            
+        })
+
+
         // Login auth asynThunk
         builder.addCase(asyncLogin.pending, (state) => {
             state.loading = true;

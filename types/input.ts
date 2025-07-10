@@ -5,7 +5,6 @@ export type LoginInputs = {
 export type SignUpInputs = {
     email: string
     password: string
-    firstName:string
-    lastName:string
-    confirmePassword:string
+    first_name:string
+    last_name:string
 }

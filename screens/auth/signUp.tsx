@@ -27,12 +27,7 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<SignUpInputs>()
-  const onSubmit: SubmitHandler<SignUpInputs> = (data) => {
-    setPassConf(data.password)
-    dispatch(asyncCreateAcc(data))
-    return console.log(passConf);
-
-  }
+  const onSubmit: SubmitHandler<SignUpInputs> = (data) => dispatch(asyncCreateAcc(data))
 
   return (
     <KeyboardAvoidingView behavior='padding' style={{ flex: 1 }}>
@@ -59,10 +54,10 @@ const SignUp = () => {
                 maxLength={50}
                 autoComplete='name-given'
                 autoCapitalize='sentences'
-                error={errors.firstName ? "First name is required" : null}
+                error={errors.first_name ? "First name is required" : null}
               />
             )}
-            name="firstName"
+            name="first_name"
           />
 
           <Controller
@@ -84,10 +79,10 @@ const SignUp = () => {
                 maxLength={50}
                 autoComplete='name-family'
                 autoCapitalize='sentences'
-                error={errors.lastName ? "Last name is required" : null}
+                error={errors.last_name ? "Last name is required" : null}
               />
             )}
-            name="lastName"
+            name="last_name"
           />
           <Controller
             control={control}
@@ -138,30 +133,7 @@ const SignUp = () => {
             name="password"
           />
 
-          <Controller
-            control={control}
-            rules={{
-              required: true,
-            }}
 
-            render={({ field: { onChange, onBlur, value, name } }) => (
-              <Input
-                placeholder='Confirme your password'
-                label='Confirme Password'
-                visible
-                enablesReturnKeyAutomatically
-                returnKeyType='done'
-                maxLength={20}
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-                error={passConf != value ? "Confirme not much" : null}
-                onSubmitEditing={handleSubmit(onSubmit)}
-              />
-            )}
-            name="confirmePassword"
-
-          />
         </View>
         <Button onPress={handleSubmit(onSubmit)}>Create Account</Button>
         <View className='text-center w-full flex flex-row flex-nowrap gap-2 items-center justify-start'><Text>Already have an account?</Text><Links screen='Login'>Log in</Links></View>
