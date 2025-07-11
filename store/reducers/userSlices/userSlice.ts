@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_AXIOS } from "api/api";
-import { RootState } from "store/store";
 
 const userAsync = createAsyncThunk("async/user",async(_,thunkAPI)=>{
     const {getState} = thunkAPI
@@ -15,8 +13,6 @@ const userAsync = createAsyncThunk("async/user",async(_,thunkAPI)=>{
     }
 })
 
-
-
 type UserType = {
     firstName:string;
     lastName:string;
@@ -30,7 +26,6 @@ const initialState: UserType = {
     lastName:"",
     email:"",
 } 
-
 
 const userSlice = createSlice({
     name:'user',
