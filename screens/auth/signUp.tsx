@@ -17,10 +17,10 @@ const SignUp = () => {
   const emailRef = useRef<TextInput>(null)
   const passwordRef = useRef<TextInput>(null)
   const confirmPasswordRef = useRef<TextInput>(null)
-  const [passConf, setPassConf] = useState<string | null>(null)
   const { error } = useAppSelector((state) => state.auth)
   const dispatch = useAppDispatch()
-
+  const [pass, setPass] = useState<string | null>(null);
+  const [passConf, setPassConf] = useState<string | null>(null)
   const {
     control,
     handleSubmit,
@@ -127,22 +127,24 @@ const SignUp = () => {
                 error={errors.password ? "Password is required" : null}
                 ref={passwordRef}
                 onSubmitEditing={() => confirmPasswordRef.current?.focus()}
+                onChange={(e) => setPass(e.nativeEvent.text)}
               />
             )}
             name="password"
           />
 
           <Input
-            returnKeyType='next'
-            placeholder='password'
-            label='Password'
+            returnKeyType='done'
+            placeholder='Confirme your password'
+            label='Confirme Password'
             enablesReturnKeyAutomatically
             visible
-            onChangeText={(e)=>console.log(e)}
+            onChangeText={(e) =>  setPassConf(e)}
             maxLength={20}
-            // error={ ? "Password is required" : null}
-            ref={passwordRef}
+            error={passConf === pass ? null:"Password not muched"}
+            ref={confirmPasswordRef}
             onSubmitEditing={handleSubmit(onSubmit)}
+
           />
         </View>
         <Button onPress={handleSubmit(onSubmit)}>Create Account</Button>

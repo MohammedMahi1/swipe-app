@@ -9,7 +9,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import { asyncLogin } from 'store/reducers/authSlices/authSlice'
 import Error from 'components/Error'
 import { useNavigation } from '@react-navigation/native'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { LoginInputs } from 'types/input'
 
 
@@ -18,6 +18,8 @@ const Login = () => {
     const dispatch = useAppDispatch()
     const {isAuthenticated} = useAppSelector(state=>state.auth)
     const navigating = useNavigation()
+
+
     const {error} = useAppSelector((state)=>state.auth)    
     const {
         control,
@@ -77,6 +79,7 @@ const Login = () => {
                                     onBlur={onBlur}
                                     value={value}
                                     error={errors.password ? "Password is required" : null}
+                                    
                                 />
                             )}
                             name="password"
