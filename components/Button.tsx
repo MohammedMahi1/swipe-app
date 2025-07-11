@@ -16,7 +16,7 @@ const variantsBtn = cva(
         "flex",
         "text-3xl",
         "text-center",
-        "py-4 rounded-md",
+        "py-4 rounded-xl",
         "w-full",
         "items-center",
         "justify-center"
