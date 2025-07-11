@@ -3,7 +3,9 @@ import Box from 'components/Box'
 import Container from 'components/Container'
 import { Span } from 'components/Typographie'
 import Avatars from 'components/ui/Avatars'
+import { useAppSelector } from 'hooks/storeHooks'
 const Home = () => {
+  const {} = useAppSelector((state)=>state.user)
   return (
     <Container className='flex-1 bg-white'>
       <Box>

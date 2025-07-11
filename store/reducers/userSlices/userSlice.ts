@@ -1,4 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { API_AXIOS } from "api/api";
+import { RootState } from "store/store";
+
+const userAsync = createAsyncThunk("async/user",async(_,thunkAPI)=>{
+    const {getState} = thunkAPI
+    try {
+        const  token = getState()
+        // const res = await API_AXIOS.get("/user")
+        console.log(token);
+        
+    } catch (error){
+        console.log(error);
+        
+    }
+})
+
+
 
 type UserType = {
     firstName:string;
@@ -15,11 +32,15 @@ const initialState: UserType = {
 } 
 
 
-const useSlice = createSlice({
+const userSlice = createSlice({
     name:'user',
     initialState,
     reducers:{},
-    extraReducers:(builder)=>{
-
+    extraReducers:(builder)=>{  
+        builder.addCase(userAsync.fulfilled,(state,{payload})=>{
+            return payload
+        })
     }
 })
+
+export default userSlice

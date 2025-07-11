@@ -5,9 +5,8 @@ import { AxiosError } from "axios";
 export const asyncLogin = createAsyncThunk("auth/login", async (data: object, thunkAPI) => {
     const { rejectWithValue } = thunkAPI
     try {
-        console.log("dfvdfvdfv");
-
         const res = await API_AXIOS.post("user/login", data)
+        console.log("nnjjnjnk");
         return res.data
     } catch (error) {
         if (error instanceof AxiosError) {
@@ -23,7 +22,6 @@ export const asyncCreateAcc = createAsyncThunk("auth/create", async (data: objec
     const { rejectWithValue } = thunkAPI
     try {
         const res = await API_AXIOS.post("user/create", data)
-        
         return res.data
     } catch (error) {
         if (error instanceof AxiosError) {
@@ -36,13 +34,12 @@ export const asyncCreateAcc = createAsyncThunk("auth/create", async (data: objec
 })
 
 
-
-
 const initialState = {
     token: null,
-    isAuthenticated: false,
+    isAuthenticated: true,
     loading: false,
     error: null,
+
 }
 const authSlice = createSlice({
     name: "auth",
@@ -53,7 +50,6 @@ const authSlice = createSlice({
         builder.addCase(asyncCreateAcc.fulfilled,(state,{payload})=>{
             state.loading = false
             console.log(payload.message);
-            
         })
 
 
@@ -67,7 +63,6 @@ const authSlice = createSlice({
             state.loading = false;
             state.isAuthenticated = true;
             state.token = payload;
-            console.log(payload);
         });
 
         builder.addCase(asyncLogin.rejected, (state, { payload }: PayloadAction<any>) => {
