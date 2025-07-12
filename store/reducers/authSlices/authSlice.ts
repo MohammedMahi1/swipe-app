@@ -33,7 +33,6 @@ export const asyncCreateAcc = createAsyncThunk("auth/create", async (data: objec
 
 })
 
-
 const initialState = {
     token: null,
     isAuthenticated: true,
@@ -41,6 +40,7 @@ const initialState = {
     error: null,
 
 }
+
 const authSlice = createSlice({
     name: "auth",
     initialState,
@@ -57,12 +57,13 @@ const authSlice = createSlice({
         builder.addCase(asyncLogin.pending, (state) => {
             state.loading = true;
             state.error = null;
+            
         });
 
         builder.addCase(asyncLogin.fulfilled, (state, { payload }) => {
             state.loading = false;
             state.isAuthenticated = true;
-            state.token = payload;
+            state.token = payload.token;
         });
 
         builder.addCase(asyncLogin.rejected, (state, { payload }: PayloadAction<any>) => {

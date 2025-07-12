@@ -1,15 +1,19 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { API_AXIOS } from "api/api";
 
-const userAsync = createAsyncThunk("async/user",async(_,thunkAPI)=>{
-    const {getState} = thunkAPI
+export const userAsync = createAsyncThunk("async/user",async(_,thunkAPI)=>{
+    const {getState,rejectWithValue} = thunkAPI
     try {
-        const  token = getState()
-        // const res = await API_AXIOS.get("/user")
-        console.log(token);
+        const  token = getState().auth.token
+        const res = await API_AXIOS.get("/user",{
+            headers:{
+                Authorization:"Bearer 32|5eN7m1jVC8fX4dkPmh77vuPkctCIraB6sTugkV6If0fedf9a"
+            }
+        })
+        return res.data.user
         
     } catch (error){
-        console.log(error);
-        
+        return rejectWithValue(error)
     }
 })
 
@@ -17,7 +21,9 @@ type UserType = {
     firstName:string;
     lastName:string;
     email:string;
-    avatare:string | null
+    avatare:string | null,
+    loading:boolean,
+    error:null | string
 }
 
 const initialState: UserType = {
@@ -25,6 +31,8 @@ const initialState: UserType = {
     firstName:"",
     lastName:"",
     email:"",
+    loading:false,
+    error:null
 } 
 
 const userSlice = createSlice({
@@ -32,8 +40,16 @@ const userSlice = createSlice({
     initialState,
     reducers:{},
     extraReducers:(builder)=>{  
-        builder.addCase(userAsync.fulfilled,(state,{payload})=>{
-            return payload
+        builder.addCase(userAsync.pending,(state,_)=>{
+            state.loading = true
+        })
+        builder.addCase(userAsync.fulfilled,(state,{payload}:PayloadAction<any>)=>{
+            state.firstName = payload.first_name
+            
+        })
+        builder.addCase(userAsync.rejected,(state,{payload})=>{
+            state.loading = false
+            // state.error = payload
         })
     }
 })
