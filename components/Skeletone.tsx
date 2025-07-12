@@ -3,12 +3,12 @@ import { View, ViewProps } from 'react-native'
 import { twMerge } from 'tailwind-merge'
 
 type SkeletoneProps =  {
-    rounded:boolean
+    rounded?:boolean
 } & ViewProps
 
 const Skeletone = ({rounded,className,...rest}:SkeletoneProps) => {
   return (
-    <View className={twMerge(rounded && "rounded-full","animate-pulse")} {...rest}/>
+    <View className={twMerge(rounded && "rounded-full","bg-secondary w-full h-[93%] rounded-xl")} {...rest}/>
   )
 }
 

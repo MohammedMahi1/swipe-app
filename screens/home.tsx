@@ -1,6 +1,7 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import Box from 'components/Box'
 import Container from 'components/Container'
+import Skeletone from 'components/Skeletone'
 import { Span } from 'components/Typographie'
 import Avatars from 'components/ui/Avatars'
 import { useAppDispatch, useAppSelector } from 'hooks/storeHooks'
@@ -9,7 +10,7 @@ import { userAsync } from 'store/reducers/userSlices/userSlice'
 const Home = () => {
   const {firstName} = useAppSelector((state)=>state.user)
   const dispatch = useAppDispatch();
-
+  const {loading} = useAppSelector((state)=>state.product)
   useEffect(()=>{
     dispatch(userAsync())
   },[dispatch])
@@ -26,6 +27,10 @@ const Home = () => {
           <Ionicons name="notifications-outline" size={24} color="black" />
         </Box.Body>
         </Box.Header>
+        {
+          !loading &&
+          <Skeletone/>
+        }
       </Box>
     </Container>
   )
