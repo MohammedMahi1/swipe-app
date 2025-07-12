@@ -9,3 +9,5 @@ const productSlice = createSlice({
     initialState,
     reducers:{},
 })
+
+export default productSlice
