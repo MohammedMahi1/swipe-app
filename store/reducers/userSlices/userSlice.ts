@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { API_AXIOS } from "api/api";
+import { RootState } from "store/store";
 
 export const userAsync = createAsyncThunk("async/user",async(_,thunkAPI)=>{
-    const {getState,rejectWithValue} = thunkAPI
+    const {getState,rejectWithValue}:{getState:any,rejectWithValue:any} = thunkAPI
     try {
         const  token = getState().auth.token
         const res = await API_AXIOS.get("/user",{
