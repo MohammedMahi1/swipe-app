@@ -1,3 +1,4 @@
+import { useAppSelector } from 'hooks/storeHooks';
 import React from 'react'
 import { View, Text } from 'react-native'
 import { Avatar } from 'react-native-elements';
@@ -8,17 +9,17 @@ type AvatarProps = {
 }
 
 const Avatars = ({ size = "medium" ,onPress}: AvatarProps) => {
+    const {firstName} = useAppSelector((state)=>state.user)
+    console.log(firstName);
+    
     return (
         <Avatar
             onPress={onPress}
-            renderPlaceholderContent={<View className='bg-red-700 p-5 w-20 h-20' />}
+            renderPlaceholderContent={<View className='bg-primary p-5 w-20 h-20' />}
             rounded
+            title={firstName.slice(0,2)}
             size={size}
-            source={{
-                uri:
-                    'https://i.pravatar.cc/300',
-                cache: 'force-cache',
-            }}
+
             containerStyle={{ margin: 10 }}
         />
     )
